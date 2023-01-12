@@ -41,7 +41,7 @@
 
 ## Sobre o Desafio
 
-Nesse desafio proposto pelo Ignite da [**Rocketseat**](https://www.rocketseat.com.br/), foi criada uma aplicação de cadastro de refeições, que contém as seguintes funcionalidades:
+**Nesse desafio proposto pelo Ignite da [**Rocketseat**](https://www.rocketseat.com.br/), foi criada uma aplicação de cadastro de refeições, que contém as seguintes funcionalidades:**
 
 - Adicionar uma nova refeição
 - Editar uma refeição
@@ -51,7 +51,7 @@ Nesse desafio proposto pelo Ignite da [**Rocketseat**](https://www.rocketseat.co
 - Armazenamento local das refeições
 - Imagem do usuário
 
-Apesar de serem poucas funcionalidades, serão utilizados conceitos como:
+**Apesar de serem poucas funcionalidades, serão utilizados conceitos como:**
 
 - Estados
 - Imutabilidade do estado
