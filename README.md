@@ -41,7 +41,7 @@
 
 ## Sobre o Desafio
 
-Nesse desafio, será desenvolvido uma aplicação de cadastro de refeições, que contém as seguintes funcionalidades:
+Nesse desafio proposto pelo Ignite da [**Rocketseat**](https://www.rocketseat.com.br/), foi criada uma aplicação de cadastro de refeições, que contém as seguintes funcionalidades:
 
 - Adicionar uma nova refeição
 - Editar uma refeição
