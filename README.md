@@ -1,10 +1,3 @@
-# rocketseat-ignite-reactnative-dailydiet
-
-Nesse desafio proposto pelo Ignite da Rocketseat, foi criada uma aplicação de cadastro de refeições.
-
-<!-- markdownlint-disable MD033 -->
-<!-- markdownlint-disable MD041 -->
-
 <div align="center">
    <a href="https://github.com/marcelolimav">
       <img alt="Made by marcelolimav" src="https://img.shields.io/badge/made%20by-marcelolimav-yellow">
@@ -27,7 +20,7 @@ Nesse desafio proposto pelo Ignite da Rocketseat, foi criada uma aplicação de 
      <img alt="React Native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
      <img alt="Expo" src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37"/>
 
-  <a/>
+  </a>
 </div>
 
 <br>
