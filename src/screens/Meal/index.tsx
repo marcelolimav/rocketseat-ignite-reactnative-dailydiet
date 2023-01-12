@@ -30,6 +30,11 @@ export type RouteParamsMeal = {
   id?: string;
 };
 
+type FeedbackProps = {
+  inside: IInside;
+  show: boolean;
+};
+
 interface FormData {
   name: string;
   description: string;
@@ -57,7 +62,10 @@ export function Meal() {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState<DataPickerModeProps>("date");
   const [show, setShow] = useState(false);
-  const [showModalFeedback, setShowModalFeedback] = useState(false);
+  const [showModalFeedback, setShowModalFeedback] = useState<FeedbackProps>({
+    inside: "off",
+    show: false,
+  } as FeedbackProps);
   const [meal, setMeal] = useState<IMeal>(newData);
 
   const navigation = useNavigation();
@@ -102,7 +110,7 @@ export function Meal() {
   }
 
   function handleGoBack() {
-    setShowModalFeedback(false);
+    setShowModalFeedback({ ...showModalFeedback, show: false });
     navigation.goBack();
   }
 
@@ -139,15 +147,16 @@ export function Meal() {
           description: form.description,
         });
       }
-      reset();
-      onChangeDate(new Date());
-      setMeal(newData);
 
       if (!id) {
-        setShowModalFeedback(true);
+        setShowModalFeedback({ inside: meal.inside, show: true });
       } else {
         navigation.navigate("detail", { id });
       }
+
+      reset();
+      onChangeDate(new Date());
+      setMeal(newData);
     } catch (error) {
       const titleMsg = `${!id ? "Nova" : "Editar"} refeição`;
 
@@ -276,9 +285,9 @@ export function Meal() {
 
         <ModalLoading visible={isLoading} />
         <ModalFeedback
-          showModal={showModalFeedback}
-          inside={newData.inside}
-          onGoBack={() => setShowModalFeedback(false)}
+          showModal={showModalFeedback.show}
+          inside={showModalFeedback.inside}
+          onGoBack={() => setShowModalFeedback({ inside: "off", show: false })}
           onGoHome={() => handleGoBack()}
         />
       </S.Container>

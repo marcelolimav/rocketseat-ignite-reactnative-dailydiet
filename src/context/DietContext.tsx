@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { MEAL_COLLECTION } from "@utils/storageConfig";
+import { MEAL_COLLECTION, IMAGE_USER_COLLECTION } from "@utils/storageConfig";
 
 import { IMeal, IMealList, IResult, IData, IInside } from "@schemas/meal";
 
@@ -10,6 +10,8 @@ export interface DietContextDataProps {
   data: IData;
   result: IResult;
   mealList: IMealList[];
+  imageUser: string;
+  setImageUser: (uri: string) => void;
   loadMealList: () => Promise<void>;
   addMeal: (meal: IMeal) => Promise<void>;
   removeMeal: (meal: IMeal) => Promise<void>;
@@ -27,6 +29,7 @@ const MIN_INSIDE = 50;
 
 export function DietContextProvider({ children }: DietProviderProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [imageUser, setImageUser] = useState<string>("");
   const [data, setData] = useState<IData>({} as IData);
   const [result, setResult] = useState<IResult>({} as IResult);
   const [mealList, setMealList] = useState<IMealList[]>([] as IMealList[]);
@@ -37,6 +40,17 @@ export function DietContextProvider({ children }: DietProviderProps) {
     const inside: IInside = percentageIn >= MIN_INSIDE ? "in" : "out";
 
     return { percentageIn, inside };
+  }
+
+  async function getImageUser() {
+    try {
+      const response = await AsyncStorage.getItem(IMAGE_USER_COLLECTION);
+      if (response) {
+        setImageUser(response);
+      }
+    } catch (error) {
+      throw error;
+    }
   }
 
   async function getStorage() {
@@ -89,7 +103,7 @@ export function DietContextProvider({ children }: DietProviderProps) {
       currentData.mealList.sort((a, b) => {
         (da = new Date(`${a.date} ${a.hour}`)),
           (db = new Date(`${b.date} ${b.hour}`));
-        return da.valueOf() - db.valueOf();
+        return db.valueOf() - da.valueOf();
       });
 
       let dataSequence = currentData.mealList.flat().map((i) => i.inside);
@@ -103,6 +117,10 @@ export function DietContextProvider({ children }: DietProviderProps) {
             .filter((i) => !!i)
             .map((i) => i.length)
         ) / 2;
+      currentData.result.sequenceInsideIn =
+        currentData.result.sequenceInsideIn >= 0
+          ? currentData.result.sequenceInsideIn
+          : 0;
 
       let idxDate: number = 0;
       currentData.mealList.forEach((i) => {
@@ -225,6 +243,7 @@ export function DietContextProvider({ children }: DietProviderProps) {
   }
 
   useEffect(() => {
+    getImageUser();
     loadMealList();
   }, []);
 
@@ -235,6 +254,8 @@ export function DietContextProvider({ children }: DietProviderProps) {
         data,
         result,
         mealList,
+        imageUser,
+        setImageUser,
         loadMealList,
         addMeal,
         removeMeal,
