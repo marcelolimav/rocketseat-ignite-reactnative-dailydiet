@@ -67,7 +67,7 @@
 O layout da aplicação **Daily Diet** foi desenvolvido pela equipe da [**Rocketseat**](https://www.rocketseat.com.br/) utilizando o [**Figma**](https://www.figma.com).
 Acesse o layout [**Daily Diet**](https://www.figma.com/file/dZzJ6Nm8eMFfBs0R9jnbLK).
 
-## Tecnologias utilizadas:
+## Tecnologias
 
 - [Gerenciador de pacotes npm](https://www.npmjs.com/)
 - [Expo Managed workflow ](https://docs.expo.dev/)
