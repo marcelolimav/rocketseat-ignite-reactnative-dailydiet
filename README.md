@@ -36,7 +36,7 @@
 
 </div>
 
-<img src=".github/assets/landing.png" alt="Landing page Daily Diet" />
+![landing](https://user-images.githubusercontent.com/26713717/212179434-dcb0fb62-4045-4a85-b9af-2910f5168af8.png)
 <br>
 
 ## Sobre o Desafio
